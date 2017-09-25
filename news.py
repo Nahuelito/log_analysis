@@ -54,8 +54,6 @@ def get_percentage():
     db.close()
     return p
 
-print get_percentage()
-
 
 print "\nMost Popular 3 Articles of all time:"
 
