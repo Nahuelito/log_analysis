@@ -11,6 +11,13 @@ GROUP BY log.path
 ORDER BY (count(*)) DESC
 LIMIT 9;
 
+CREATE VIEW authors_views AS
+SELECT articles.author,
+       articles.slug,
+       popular_articles.num
+FROM articles
+JOIN popular_articles ON articles.slug = popular_articles.slug;
+
 CREATE VIEW pop_authors AS
 SELECT authors_views.author,
        sum(authors_views.num) AS sum
