@@ -1,4 +1,4 @@
-# Python 2.7.12
+#!/usr/bin/env python
 
 import psycopg2
 
