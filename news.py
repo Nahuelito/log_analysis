@@ -16,11 +16,11 @@ def get_pop_articles():
     FROM articles JOIN popular_articles
     ON articles.slug = popular_articles.slug
     ORDER BY popular_articles.num desc
-    LIMIT 4;
+    LIMIT 3;
     """)
     p = c.fetchall()
     db.close()
-    return p[1:]
+    return p
 
 
 def get_pop_authors():
@@ -46,7 +46,7 @@ def get_percentage():
     db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
     c.execute("""
-    SELECT date, error_percentage AS precentage
+    SELECT to_char(date, 'FMMonth FMDD, YYYY'), error_percentage AS precentage
     FROM percentage_of_errors
     WHERE percentage_of_errors.error_percentage >= 1;
     """)
@@ -68,4 +68,4 @@ for i in get_pop_authors():
 print "\nDays with more than 1% of errors:"
 
 for i in get_percentage():
-    print "- %s - %.2f%%" % (i[0].strftime("%B %d, %Y"), i[1])
+    print "- %s - %.2f%%" % (i[0], i[1])
