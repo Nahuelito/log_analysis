@@ -3,30 +3,31 @@
 The purpose of the project is to print out reports on the terminal based on the newspaper database provided.
 
 The code produces three reports:
-..* Most popular three articles of all time
-..* Most popular Article Authors of all time
-..* Days with more than 1% of errors
+* Most popular three articles of all time
+* Most popular Article Authors of all time
+* Days with more than 1% of errors
 
 The project makes use of the Linux based virtual machine VirtualBox/Vagrant environment which has all the components needed already installed (Python, PostgreSQL, and the psycopg2 library).
 
 The news database is a SQL file containing newspaper articles, author's information and web server logs to the site.
 This database contains three tables:
-..* The `authors` table includes information about the authors of articles
-..* The `articles` table includes the articles themselves.
-..* The `log` table includes one entry for each time a user has accessed the site.
+* The `authors` table includes information about the authors of articles
+* The `articles` table includes the articles themselves.
+* The `log` table includes one entry for each time a user has accessed the site.
 
-You can download the `newsdata.sql` file from [this link](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip) and unzip it into the `vagrant` directory which is shared with you virtual machine.
+You can download the `newsdata.sql` file from [this link](https://d17h27t6h515a5.cloudfront.net/topher/2016/August/57b5f748_newsdata/newsdata.zip) and unzip it into the `vagrant` directory which is shared with your virtual machine.
 
 To build the reporting tool, you'll need to load the site's data into your local database.
 To do this, `cd` into the `vagrant` directory and use the command `psql -d news -f newsdata.sql`
+
 Explanation of the command executed:
-..* `psql`: the PostgreSQL command line program
-..* `-d news`: connect to the database named news which has been set up for you.
-..* `-f newsdate.sql`: run the SQL statements in the file `newsdata.sql`
+* `psql`: the PostgreSQL command line program
+* `-d news`: connect to the database named news which has been set up for you.
+* `-f newsdate.sql`: run the SQL statements in the file `newsdata.sql`
 
 Running this command will connect to your installed database server and execute the SQL commands on the downloaded file, creating tables and populating them with data.
 
-##Views:
+## Views:
 
 You should create the following views into your local database before running the python file.
 
