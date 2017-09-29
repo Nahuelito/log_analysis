@@ -4,6 +4,7 @@ import psycopg2
 
 DBNAME = 'news'
 
+
 def db_handler(query):
     db = psycopg2.connect(database=DBNAME)
     c = db.cursor()
@@ -11,6 +12,7 @@ def db_handler(query):
     p = c.fetchall()
     db.close()
     return p
+
 
 def get_pop_articles():
     """Return a sorted list of articles that
@@ -45,6 +47,7 @@ def get_pop_authors():
     for i in results:
         print "- %s - %d Views" % (i[0], i[1])
 
+
 def get_err_percentages():
     """
     Return the days which more than 1% of the requests lead to errors.
@@ -60,8 +63,8 @@ def get_err_percentages():
     for i in results:
         print "- %s - %.2f%%" % (i[0], i[1])
 
+
 if __name__ == "__main__":
     get_pop_articles()
     get_pop_authors()
     get_err_percentages()
-
